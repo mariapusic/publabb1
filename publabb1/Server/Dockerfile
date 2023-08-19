@@ -6,12 +6,12 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["publabb1/Server/publabb1.Server.csproj", "publabb1/Server/"]
-COPY ["publabb1/Client/publabb1.Client.csproj", "publabb1/Client/"]
-COPY ["publabb1/Shared/publabb1.Shared.csproj", "publabb1/Shared/"]
+COPY ["Server/publabb1.Server.csproj", "publabb1/Server/"]
+COPY ["Client/publabb1.Client.csproj", "publabb1/Client/"]
+COPY ["Shared/publabb1.Shared.csproj", "publabb1/Shared/"]
 RUN dotnet restore "publabb1/Server/publabb1.Server.csproj"
 COPY . .
-WORKDIR "/src/publabb1/Server"
+WORKDIR "/src/Server"
 RUN dotnet build "publabb1.Server.csproj" -c Release -o /app/build
 
 FROM build AS publish
