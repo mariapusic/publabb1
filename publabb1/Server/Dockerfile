@@ -9,7 +9,7 @@ WORKDIR /src
 COPY ["Server/publabb1.Server.csproj", "publabb1/Server/"]
 COPY ["Client/publabb1.Client.csproj", "publabb1/Client/"]
 COPY ["Shared/publabb1.Shared.csproj", "publabb1/Shared/"]
-RUN dotnet restore "publabb1/Server/publabb1.Server.csproj"
+RUN dotnet restore "Server/publabb1.Server.csproj"
 COPY . .
 WORKDIR "/src/Server"
 RUN dotnet build "publabb1.Server.csproj" -c Release -o /app/build
