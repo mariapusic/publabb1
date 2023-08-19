@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  publabb1.server:
+    image: ${DOCKER_REGISTRY-}publabb1server
+    build:
+      context: .
+      dockerfile: publabb1/Server/Dockerfile
+    environment:
+      - connectionstrings__defaultConnectionstring=Server=postgres;Port=5432;Database=publabb1;User Id=postgres;Password=postgres;
+  postgres:
+    image: postgres:latest 
+    container_name: postgres
+    environment:
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=postgres
+     - POSTGRES_DB=publabb1
+    ports:
+     - 5432:5432
+    restart: always
+    volumes:
+     - pgsql_data:/var/lib/postgresql/data
+
+volumes:
+  pgsql_data:
+
