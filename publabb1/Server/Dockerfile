@@ -6,8 +6,8 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["publabb1.Server.csproj", "Server/"]
-COPY ["publabb1.Client.csproj", "Client/"]
+COPY ["Server/publabb1.Server.csproj", "Server/"]
+#COPY ["Client/publabb1.Client.csproj", "Client/"]
 RUN dotnet restore "Server/publabb1.Server.csproj"
 COPY . .
 WORKDIR "/src/Server"
